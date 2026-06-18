@@ -1,0 +1,46 @@
+class Node:
+    def __init__(self,val=None,next=None):
+        self.val=val
+        self.next=next
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.start=None
+
+    def insert_at_start(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            self.start=new_Node
+        else:
+            new_Node.next=self.start
+            self.start=new_Node
+    def display(self):
+        temp=self.start
+        while temp:
+            print(temp.val,end=" ")
+            temp=temp.next     
+
+    def palindrome_list(self):
+        if self.start is None:
+            return None
+        arr=[]
+        temp=self.start
+        while temp:
+            arr.append(temp.val)
+            temp=temp.next
+        if arr==arr[::-1]:
+            print("it is palindrome")
+        else:
+            print("it is not palindrome")    
+
+SLL=SinglyLinkedList()
+SLL.insert_at_start(1)         
+SLL.insert_at_start(1)                            
+SLL.insert_at_start(2)                            
+SLL.insert_at_start(2)  
+SLL.insert_at_start(1)
+SLL.insert_at_start(1)
+SLL.display()
+print()
+SLL.palindrome_list()
+
