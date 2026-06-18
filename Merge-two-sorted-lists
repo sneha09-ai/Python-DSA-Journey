@@ -1,0 +1,62 @@
+class Node:
+    def __init__(self,val=None,next=None):
+        self.val=val
+        self.next=next
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.start=None
+
+    def insert_at_end(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            self.start=new_Node
+        else:
+            temp=self.start
+            while temp.next:
+                temp=temp.next
+            temp.next=new_Node   
+
+    def display(self):
+        temp=self.start
+        while temp:
+            print(temp.val,end=" ")
+            temp=temp.next                 
+
+    def merge_two_list(self,L1,L2):
+        temp1=L1.start
+        temp2=L2.start
+        merge=SinglyLinkedList()
+        while temp1 and temp2:
+            if temp1.val<temp2.val:
+                merge.insert_at_end(temp1.val)  
+                temp1=temp1.next    
+            else:
+                merge.insert_at_end(temp2.val)
+                temp2=temp2.next
+        while temp1:   
+            merge.insert_at_end(temp1.val)  
+            temp1=temp1.next   
+        while temp2:
+            merge.insert_at_end(temp2.val)  
+            temp2=temp2.next      
+        return merge 
+
+L1 = SinglyLinkedList()
+L1.insert_at_end(10)
+L1.insert_at_end(30)
+L1.insert_at_end(50)  
+L1.display()
+print()
+
+L2 = SinglyLinkedList()
+L2.insert_at_end(20)
+L2.insert_at_end(40)
+L2.insert_at_end(60)
+L2.display()
+print()
+
+result=L1.merge_two_list(L1,L2)
+print("merge list:")
+result.display()
+                
