@@ -1,0 +1,5 @@
+arr=list(map(int,input("enter the no.:").split(",")))
+if arr==arr[::-1]:
+    print("palindrome")
+else:
+    print("not a palindrome")
