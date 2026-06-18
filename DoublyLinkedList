@@ -1,0 +1,115 @@
+class Node:
+    def __init__(self,val=None,prev=None,next=None):
+        self.prev=prev
+        self.val=val
+        self.next=next
+
+class DoublyLinkedList:
+    def __init__(self):
+        self.start=None
+
+    def is_empty(self):
+        if self.start is None:
+            return None
+
+    def insert_at_start(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            self.start=new_Node
+        else:
+            new_Node.next=self.start
+            self.start.prev=new_Node 
+            self.start=new_Node
+
+    def insert_at_end(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            self.start=new_Node
+        if self.start.next is not None:
+            temp=self.start
+            while temp.next is not None:
+                temp=temp.next      
+            temp.next=new_Node 
+            new_Node.prev=temp
+
+    def insert_at_middle(self, val, item):
+     new_Node = Node(val)
+
+     if self.start is None:
+        self.start = new_Node
+     else:
+        temp = self.start
+
+        while temp is not None:
+            if temp.val == item:
+                new_Node.next = temp.next
+                new_Node.prev = temp
+                if temp.next is not None:
+                    temp.next.prev = new_Node
+                temp.next = new_Node
+                return
+            temp = temp.next
+
+    def delete_at_start(self):
+        if self.start is None:
+            return None
+        if self.start.next is None:
+            self.start=None
+        else:
+            self.start=self.start.next       
+
+    def delete_at_end(self):
+        if self.start is None:
+            return None
+        if self.start.next is None:
+            self.start=None
+        else:
+            temp=self.start
+            while temp.next is not None:
+                temp=temp.next      
+            temp.prev.next=None               
+
+    def delete_at_middle(self,item):
+        if self.start is None:
+            return None
+        if self.start.next is None:
+            self.start=None
+        else:
+            temp=self.start
+            while temp is not None:
+                if temp.val==item:
+                    temp.next=temp.next.next
+                    temp.next.next.prev=temp.next
+                temp=temp.next                
+
+
+    def display(self):
+        temp=self.start
+        while temp is not None:
+            print(temp.val,end=" ")
+            temp=temp.next
+
+DLL=DoublyLinkedList()
+DLL.insert_at_start(5)         
+DLL.insert_at_start(4)                                     
+DLL.insert_at_start(3)                                     
+DLL.insert_at_start(2)                                     
+DLL.insert_at_start(1)     
+
+DLL.insert_at_end(10)
+DLL.insert_at_end(9)
+DLL.insert_at_end(8)
+DLL.insert_at_end(7)
+DLL.insert_at_end(6)
+
+DLL.insert_at_middle(0,10)
+DLL.insert_at_middle(00,9)
+DLL.insert_at_middle(000,8)
+DLL.insert_at_middle(0000,7)
+DLL.insert_at_middle(00000,8)
+
+DLL.delete_at_start()
+DLL.delete_at_end()
+DLL.delete_at_middle(8)
+
+DLL.display()
