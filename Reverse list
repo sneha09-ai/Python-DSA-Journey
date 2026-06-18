@@ -1,0 +1,48 @@
+class Node:
+    def __init__(self, item=None, next=None):
+        self.item = item
+        self.next = next
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.start = None
+
+    def insert_at_start(self, data):
+        new_node = Node(data, self.start)
+        self.start = new_node
+
+    def display(self):
+        temp = self.start
+        while temp:
+            print(temp.item, end=" -> ")
+            temp = temp.next
+        print("None")
+
+class Solution:
+    def reverseList(self, head):
+        prev = None
+        temp = head
+
+        while temp:
+            nxt = temp.next
+            temp.next = prev
+            prev = temp
+            temp = nxt
+
+        return prev
+
+SLL = SinglyLinkedList()
+SLL.insert_at_start(5)
+SLL.insert_at_start(4)
+SLL.insert_at_start(3)
+SLL.insert_at_start(2)
+SLL.insert_at_start(1)
+
+print("Original List:")
+SLL.display()
+
+sol = Solution()
+SLL.start = sol.reverseList(SLL.start)
+
+print("Reversed List:")
+SLL.display()
