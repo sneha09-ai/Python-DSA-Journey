@@ -1,0 +1,46 @@
+class Node:
+    def __init__(self,val=None,next=None):
+        self.val=val
+        self.next=next
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.start=None
+
+    def insert_at_start(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            self.start=new_Node
+        else:
+            new_Node.next=self.start
+            self.start=new_Node
+    def display(self):
+        temp=self.start
+        while temp:
+            print(temp.val,end=" ")
+            temp=temp.next     
+
+    def detect_cycle(self):
+      if self.start is None:
+        return None
+      slow=self.start
+      fast=self.start
+      while fast is not None and fast.next is not None:
+        slow=slow.next
+        fast=fast.next.next
+        if slow==fast:
+            return True
+      return False    
+
+SLL=SinglyLinkedList()
+SLL.insert_at_start(50)         
+SLL.insert_at_start(40)                            
+SLL.insert_at_start(30)                            
+SLL.insert_at_start(20)  
+SLL.insert_at_start(10)
+SLL.insert_at_start(40)
+SLL.display()
+print()
+print(SLL.detect_cycle())
+
+
