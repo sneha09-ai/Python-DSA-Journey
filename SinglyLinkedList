@@ -1,0 +1,96 @@
+class Node:
+    def __init__(self,val=None,next=None):
+        self.val=val
+        self.next=next
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.start=None
+
+    def is_empty(self):
+       return self.start is None
+
+    def insert_at_starting(self,val):
+        new_Node=Node(val)
+        new_Node.next=self.start
+        self.start=new_Node        
+        
+    def insert_at_end(self,val):
+        new_Node=Node(val)
+        if self.start is not None:
+            temp=self.start
+            while temp.next is not None:
+             temp=temp.next
+            temp.next=new_Node
+        else:
+            self.start=new_Node       
+
+    def insert_at_middle(self,item,val):
+        new_Node=Node(val)
+        temp=self.start
+        while temp is not None:
+         if temp.val==item:
+          new_Node.next=temp.next         
+          temp.next=new_Node
+         temp=temp.next
+
+    def delete_first(self):
+       if self.start is not None:
+          self.start=self.start.next
+       else:
+          return None        
+       
+    def delete_last(self):
+       if self.start is None:
+          return None
+       if self.start.next is None:
+          self.start=None
+       if self.start is not None:
+          temp=self.start
+          while temp.next.next is not None:   
+            temp=temp.next 
+          temp.next=None
+
+
+    def delete_after(self,item):
+       if self.start is None:
+          return None
+       if self.start.next is None:
+          self.start=None
+       if self.start is not None:
+          temp=self.start  
+          while temp is not None and temp.next is not None: 
+           if temp.val==item:
+             temp.next=temp.next.next
+           temp=temp.next  
+                   
+        
+    def display(self):
+        temp=self.start
+        while temp:
+            print(temp.val,end=" ")
+            temp=temp.next
+
+SLL=SinglyLinkedList()
+SLL.insert_at_starting(5)
+SLL.insert_at_starting(4)
+SLL.insert_at_starting(3)
+SLL.insert_at_starting(2)
+SLL.insert_at_starting(1)
+
+SLL.insert_at_end(10)
+SLL.insert_at_end(9)
+SLL.insert_at_end(8)
+SLL.insert_at_end(7)
+SLL.insert_at_end(6)
+
+SLL.insert_at_middle(1,100)
+SLL.insert_at_middle(2,200)
+SLL.insert_at_middle(6,3000)
+SLL.insert_at_middle(8,40000)
+
+SLL.delete_first()
+SLL.delete_last()
+SLL.delete_after(10)
+
+SLL.display()
