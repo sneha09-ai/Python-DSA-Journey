@@ -1,0 +1,38 @@
+class Node:
+    def __init__(self, val=None, next=None):
+        self.val = val
+        self.next = next
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.start = None
+
+    def insert_at_start(self, val):
+        new_node = Node(val)
+        new_node.next = self.start
+        self.start = new_node
+
+    def display(self):
+        temp = self.start
+        while temp:
+            print(temp.val, end=" -> ")
+            temp = temp.next
+        print("None")
+
+    def middle_element(self):
+        slow = self.start
+        fast = self.start
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+        return slow.val
+
+SLL = SinglyLinkedList()
+SLL.insert_at_start(50)
+SLL.insert_at_start(40)
+SLL.insert_at_start(30)
+SLL.insert_at_start(20)
+SLL.insert_at_start(10)
+
+SLL.display()
+print("Middle Element:", SLL.middle_element())
