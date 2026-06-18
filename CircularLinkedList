@@ -1,0 +1,128 @@
+class Node:
+    def __init__(self,val=None,prev=None,next=None):
+        self.val=val
+        self.prev=prev
+        self.next=next
+
+class CircularLinkedList:
+    def __init__(self):
+        self.start=None
+
+    def is_empty(self):
+        if self.start is None:
+            return None
+
+    def insert_at_start(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            new_Node.next=new_Node
+            self.start=new_Node
+        else:
+            temp=self.start
+            while temp.next!=self.start:
+                temp=temp.next
+            temp.next=new_Node    
+            new_Node.next=self.start
+            self.start=new_Node
+
+    def insert_at_end(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            new_Node.next=new_Node
+            self.start=new_Node
+        else:
+            temp=self.start
+            while temp.next!=self.start:
+                temp=temp.next
+            self.start.prev=new_Node
+            temp.next=new_Node
+            new_Node.next=self.start     
+
+    def insert_at_middle(self,val,item):
+        new_Node=Node(val)
+        if self.start is None:
+            new_Node.next=new_Node
+            self.start=new_Node
+        else:
+            temp=self.start
+            while temp.next!=self.start:
+                 if temp.val==item:
+                    new_Node.next=temp.next
+                    new_Node.prev=temp
+                    temp.next.prev=new_Node
+                    temp.next=new_Node
+                 temp=temp.next
+                 if temp==self.start:
+                     break
+    
+    def delete_first(self):
+        if self.start is None:
+            return None
+        if self.start==self.start.next:
+            self.start=None
+        else:
+            temp=self.start
+            while temp.next!=self.start:
+                temp=temp.next    
+            temp.next=self.start.next
+            self.start.prev=temp
+            self.start=self.start.next
+
+    def delete_last(self):
+        if self.start is None:
+            return None
+        if self.start==self.start.next:
+            self.start=None
+        else:
+            temp=self.start
+            while temp.next.next!=self.start:
+                temp=temp.next
+            temp.next=self.start     
+
+    def delete_middle(self,item):
+        if self.start is None:
+            return None
+        if self.start==self.start.next:
+            self.start=None
+        else:
+            temp=self.start
+            while temp.next!=self.start:
+                if temp.val==item:
+                    temp.next=temp.next.next
+                temp=temp.next    
+
+
+    def display(self):
+        temp=self.start
+        while temp is not None:
+            print(temp.val,end=" ")
+            temp=temp.next
+            if temp==self.start:
+                break
+
+CLL=CircularLinkedList()
+CLL.insert_at_start(10)
+CLL.insert_at_start(9)  
+CLL.insert_at_start(8)  
+CLL.insert_at_start(7)  
+CLL.insert_at_start(6)  
+
+CLL.insert_at_end(1)
+CLL.insert_at_end(2)
+CLL.insert_at_end(3)
+CLL.insert_at_end(4)
+CLL.insert_at_end(5)
+
+CLL.insert_at_middle(68,6)
+CLL.insert_at_middle(88,7)
+CLL.insert_at_middle(98,9)
+CLL.insert_at_middle(200,2)
+CLL.insert_at_middle(4000,4)
+
+CLL.delete_first()
+CLL.delete_first()
+
+CLL.delete_last()
+CLL.delete_last()
+CLL.delete_middle(10)
+CLL.display()
