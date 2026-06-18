@@ -1,0 +1,135 @@
+class Node:
+    def __init__(self,val=None,prev=None,next=None):
+        self.val=val
+        self.prev=prev
+        self.next=next
+        
+class DoublyCircularLinkedList:
+    def __init__(self):
+        self.start=None
+
+    def is_emmpty(self):
+        if self.start is None:
+            return None
+
+    def insert_at_start(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            new_Node.next=new_Node
+            new_Node.prev=new_Node
+            self.start=new_Node
+        else:
+            temp=self.start
+            while temp.next!=self.start:
+             temp=temp.next
+            new_Node.next=self.start 
+            new_Node.prev=temp
+            temp.next=new_Node
+            self.start.prev=new_Node
+            self.start=new_Node
+
+    def insert_at_end(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            new_Node.next=new_Node
+            new_Node.prev=new_Node
+            self.start=new_Node
+        else:
+            temp=self.start
+            while temp.next!=self.start:
+                temp=temp.next
+            new_Node.prev=temp
+            new_Node.next=self.start
+            temp.next=new_Node
+            self.start.prev=new_Node
+
+    def insert_in_Middle(self,val,item):
+        new_Node=Node(val)
+        if self.start is None:
+            new_Node.prev=new_Node
+            new_Node.next=new_Node
+            self.start=new_Node
+        else:
+            temp=self.start
+            while temp:
+                if temp.val==item:
+                 new_Node.next=temp.next
+                 new_Node.prev=temp
+                 temp.next.prev=new_Node
+                 temp.next=new_Node       
+
+                temp=temp.next   
+                if temp==self.start:
+                    break  
+
+    def delete_at_start(self):
+        if self.start is None:
+            return None
+        else:
+            temp=self.start
+            while temp.next!=self.start:
+                temp=temp.next 
+            temp.next=self.start.next
+            self.start=self.start.next
+            self.start.prev=temp         
+
+    def delete_at_end(self):
+        if self.start is None:
+            return None
+        if self.start.next==self.start:
+            self.start=None
+        else:
+            temp=self.start
+            while temp.next.next!=self.start:
+                temp=temp.next
+            temp.next=self.start      
+            self.start.prev=temp
+
+    def delete_middle(self,item):
+        if self.start is None:
+            return None
+        if self.start.next==self.start:
+            self.start=None
+        else:
+            temp=self.start
+            while temp:
+                if temp.val==item: 
+                    temp.prev.next = temp.next
+                    temp.next.prev = temp.prev
+                temp=temp.next
+                if temp==self.start:
+                    break               
+         
+
+    def display(self):
+        temp=self.start
+        while temp:
+            print(temp.val,end=" ")
+            temp=temp.next
+
+            if temp==self.start:
+             break
+
+DCLL=DoublyCircularLinkedList()
+DCLL.insert_at_start(1)                   
+DCLL.insert_at_start(2)                     
+DCLL.insert_at_start(3)                     
+DCLL.insert_at_start(4)                     
+DCLL.insert_at_start(5) 
+
+DCLL.insert_at_end(6)
+DCLL.insert_at_end(7)
+DCLL.insert_at_end(8)
+DCLL.insert_at_end(9)
+DCLL.insert_at_end(10)
+
+DCLL.insert_in_Middle(100,1)
+DCLL.insert_in_Middle(500,5)
+DCLL.insert_in_Middle(800,8)
+DCLL.insert_in_Middle(400,4)
+
+DCLL.delete_at_start()
+DCLL.delete_at_end()
+DCLL.delete_middle(4)
+
+DCLL.display()
