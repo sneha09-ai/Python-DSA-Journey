@@ -1,0 +1,48 @@
+class Node:
+    def __init__(self,val=None,next=None):
+        self.val=val
+        self.next=next
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.start=None
+
+    def insert_at_start(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            self.start=new_Node
+        else:
+            new_Node.next=self.start
+            self.start=new_Node
+    def display(self):
+        temp=self.start
+        while temp:
+            print(temp.val,end=" ")
+            temp=temp.next     
+
+    def Count_Even_and_Odd_Nodes(self):
+        if self.start is None:
+            return None
+        temp=self.start
+        even_count=0
+        odd_count=0
+        while temp:
+            if temp.val % 2 ==0:
+                even_count+=1
+            else:
+                odd_count+=1
+            temp=temp.next   
+        return even_count,odd_count
+
+SLL=SinglyLinkedList()
+SLL.insert_at_start(123)         
+SLL.insert_at_start(3)                            
+SLL.insert_at_start(20)                            
+SLL.insert_at_start(33)  
+SLL.insert_at_start(80)
+SLL.insert_at_start(10)
+SLL.display()
+print()
+print("Count Even and Odd Nodes:",SLL.Count_Even_and_Odd_Nodes())
+
+
