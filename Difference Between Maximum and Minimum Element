@@ -1,0 +1,51 @@
+class Node:
+    def __init__(self,val=None,next=None):
+        self.val=val
+        self.next=next
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.start=None
+
+    def insert_at_start(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            self.start=new_Node
+        else:
+            new_Node.next=self.start
+            self.start=new_Node
+    def display(self):
+        temp=self.start
+        while temp:
+            print(temp.val,end=" ")
+            temp=temp.next     
+
+    def Difference_Between_Maximum_and_Minimum_Element(self):
+        if self.start is None:
+            return None
+        temp=self.start
+        max_val=self.start.val
+        min_val=self.start.val
+        difference=0
+        while temp:
+            if temp.val > max_val:
+                max_val=temp.val
+            if temp.val < min_val:
+                min_val=temp.val    
+            temp=temp.next
+        difference=max_val - min_val
+        return difference        
+        
+
+SLL=SinglyLinkedList()
+SLL.insert_at_start(123)         
+SLL.insert_at_start(3)                            
+SLL.insert_at_start(820)                            
+SLL.insert_at_start(900)  
+SLL.insert_at_start(30)
+SLL.insert_at_start(23)
+SLL.display()
+print()
+print("Difference Between Maximum and Minimum Element:",SLL.Difference_Between_Maximum_and_Minimum_Element())
+
+
