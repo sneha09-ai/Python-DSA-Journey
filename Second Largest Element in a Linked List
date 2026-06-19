@@ -1,0 +1,50 @@
+
+class Node:
+    def __init__(self,val=None,next=None):
+        self.val=val
+        self.next=next
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.start=None
+
+    def insert_at_start(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            self.start=new_Node
+        else:
+            new_Node.next=self.start
+            self.start=new_Node
+    def display(self):
+        temp=self.start
+        while temp:
+            print(temp.val,end=" ")
+            temp=temp.next     
+
+    def Second_Largest_Element(self):
+        if self.start is None:
+            return None
+        temp=self.start
+        largest=self.start.val
+        second=self.start.val
+        while temp:
+            if temp.val>largest:
+               second=largest
+               largest=temp.val
+            elif temp.val>second and temp.val!=largest:
+                second=temp.val
+            temp=temp.next
+        return second    
+
+SLL=SinglyLinkedList()
+SLL.insert_at_start(123)         
+SLL.insert_at_start(12)                            
+SLL.insert_at_start(20)                            
+SLL.insert_at_start(250)  
+SLL.insert_at_start(150)
+SLL.insert_at_start(10)
+SLL.display()
+print()
+print("Second Largest Elementt:",SLL.Second_Largest_Element())
+
+
