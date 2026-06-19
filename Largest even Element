@@ -1,0 +1,47 @@
+class Node:
+    def __init__(self,val=None,next=None):
+        self.val=val
+        self.next=next
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.start=None
+
+    def insert_at_start(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            self.start=new_Node
+        else:
+            new_Node.next=self.start
+            self.start=new_Node
+    def display(self):
+        temp=self.start
+        while temp:
+            print(temp.val,end=" ")
+            temp=temp.next     
+
+    def Largest_even_Element(self):
+        if self.start is None:
+            return None
+        temp=self.start
+        largest=None
+        while temp:
+          if temp.val % 2 == 0:
+            if largest is  None or temp.val>largest:
+                 largest=temp.val
+          temp=temp.next
+        return largest             
+
+
+SLL=SinglyLinkedList()
+SLL.insert_at_start(123)         
+SLL.insert_at_start(32)                            
+SLL.insert_at_start(20)                            
+SLL.insert_at_start(36)  
+SLL.insert_at_start(80)
+SLL.insert_at_start(10)
+SLL.display()
+print()
+print("Largest even Element:",SLL.Largest_even_Element())
+
+
