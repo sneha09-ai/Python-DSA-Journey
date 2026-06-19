@@ -1,0 +1,47 @@
+class Node:
+    def __init__(self,val=None,next=None):
+        self.val=val
+        self.next=next
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.start=None
+
+    def insert_at_start(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            self.start=new_Node
+        else:
+            new_Node.next=self.start
+            self.start=new_Node
+    def display(self):
+        temp=self.start
+        while temp:
+            print(temp.val,end=" ")
+            temp=temp.next     
+
+    def smallest_odd_Element(self):
+        if self.start is None:
+            return None
+        temp=self.start
+        smallest=None
+        while temp:
+          if temp.val % 2 != 0:
+            if smallest is  None or temp.val<smallest:
+                 smallest=temp.val
+          temp=temp.next
+        return smallest             
+
+
+SLL=SinglyLinkedList()
+SLL.insert_at_start(123)         
+SLL.insert_at_start(3)                            
+SLL.insert_at_start(20)                            
+SLL.insert_at_start(33)  
+SLL.insert_at_start(80)
+SLL.insert_at_start(10)
+SLL.display()
+print()
+print("smallest odd Element:",SLL.smallest_odd_Element())
+
+
