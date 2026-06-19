@@ -1,0 +1,49 @@
+class Node:
+    def __init__(self,val=None,next=None):
+        self.val=val
+        self.next=next
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.start=None
+
+    def insert_at_start(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            self.start=new_Node
+        else:
+            new_Node.next=self.start
+            self.start=new_Node
+    def display(self):
+        temp=self.start
+        while temp:
+            print(temp.val,end=" ")
+            temp=temp.next     
+
+    def Average_of_All_Elements(self):
+        if self.start is None:
+            return None
+        temp=self.start
+        total=0
+        n=0
+        average=0
+        while temp:
+            total+=temp.val
+            n+=1
+            temp=temp.next
+        average=total/n
+        return average        
+        
+
+SLL=SinglyLinkedList()
+SLL.insert_at_start(123)         
+SLL.insert_at_start(3)                            
+SLL.insert_at_start(820)                            
+SLL.insert_at_start(900)  
+SLL.insert_at_start(30)
+SLL.insert_at_start(23)
+SLL.display()
+print()
+print("Average of All Elements:",SLL.Average_of_All_Elements())
+
+
