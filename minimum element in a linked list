@@ -1,0 +1,45 @@
+class Node:
+    def __init__(self,val=None,next=None):
+        self.val=val
+        self.next=next
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.start=None
+
+    def insert_at_start(self,val):
+        new_Node=Node(val)
+        if self.start is None:
+            self.start=new_Node
+        else:
+            new_Node.next=self.start
+            self.start=new_Node
+    def display(self):
+        temp=self.start
+        while temp:
+            print(temp.val,end=" ")
+            temp=temp.next     
+
+    def maximum_element(self):
+        if self.start is None:
+            return None
+        max_val=self.start.val
+        temp=self.start
+        while temp:
+            if temp.val>max_val:
+                max_val=temp.val
+            temp=temp.next
+        return max_val
+
+SLL=SinglyLinkedList()
+SLL.insert_at_start(1)         
+SLL.insert_at_start(1)                            
+SLL.insert_at_start(2)                            
+SLL.insert_at_start(2)  
+SLL.insert_at_start(1)
+SLL.insert_at_start(1)
+SLL.display()
+print()
+print("maximum element:",SLL.maximum_element())
+
+
