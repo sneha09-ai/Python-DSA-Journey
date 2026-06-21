@@ -1,0 +1,6 @@
+arr = list(map(int,input("enter the numbers:").split(",")))
+target=int(input("enter the target number:"))
+for i in range(len(arr)):
+    for j in range(i+1,len(arr)):
+      if arr[i] + arr[j] == target:
+        print("sum of two element:",arr[i],arr[j])
