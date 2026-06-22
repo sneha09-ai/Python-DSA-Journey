@@ -1,0 +1,6 @@
+arr=list(map(int,input("enter the number:").split(",")))
+k=int(input("enter the number:"))
+for i in range(k):
+    last=arr.pop()
+    arr.insert(0,last)
+print("array:",arr) 
