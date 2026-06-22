@@ -1,0 +1,9 @@
+str=input("enter the words:").split(",")
+group={}
+for word in str:
+    key="".join(sorted(word))
+    if key not in group:
+        group[key]=[]
+    group[key].append(word)
+print("word:",group.values())    
+
