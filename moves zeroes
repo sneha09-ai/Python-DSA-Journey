@@ -1,0 +1,9 @@
+arr=list(map(int,input("enter the numbers:").split(",")))
+arr1=[]
+for i in range(len(arr)):
+     if arr[i]!=0:
+        arr1.append(arr[i])
+zero_count=arr.count(0)
+for i in range(zero_count):
+        arr1.append(0)    
+print("moves zero to the end:",arr1)     
