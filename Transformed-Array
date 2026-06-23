@@ -1,0 +1,7 @@
+arr=list(map(int,input("enter the number:").split(",")))
+n=len(arr)
+result=[]
+for i in range(n):
+    new_index=(i+arr[i])%n
+    result.append(arr[new_index])
+print("new index array:",result)    
