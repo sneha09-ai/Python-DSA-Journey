@@ -1,0 +1,11 @@
+prices=list(map(int,input("enter the prices:").split(",")))
+min_price=prices[0]
+max_profit=0
+result=[]
+for i in range(len(prices)):
+    if prices[i]<min_price:
+        min_price=prices[i]
+    profit=prices[i]-min_price    
+    if profit>max_profit:
+        max_profit=profit
+print("max and min profit difference:",max_profit)    
