@@ -1,0 +1,9 @@
+arr=list(map(int,input("enter the elemnts:").split(",")))
+n=len(arr)
+expected_sum=sum(range(n+1))
+actual_sum=0
+missing_number=0
+for i in range(len(arr)):
+    actual_sum+=arr[i]
+    missing_number=expected_sum-actual_sum
+print("missing number:",missing_number)    
