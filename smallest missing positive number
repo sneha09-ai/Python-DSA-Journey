@@ -1,0 +1,11 @@
+n = list(map(int, input("enter the elements: ").split(",")))
+arr=[]
+for i in range(len(n)):
+    if n[i]>0:
+        arr.append(n[i])
+num=1
+while True:
+    if num not in arr:    
+        print("first missing number:",num)  
+        break  
+    num+=1
