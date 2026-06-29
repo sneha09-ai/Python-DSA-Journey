@@ -1,0 +1,14 @@
+arr= list(map(int, input("enter the elements: ").split(",")))
+arr.sort()
+max_length=1
+current_length=1
+for i in range(len(arr)-1):
+    if arr[i+1]==arr[i]+1:
+     current_length+=1
+    else:
+       if current_length > max_length:
+          max_length=current_length
+       current_length=1   
+if current_length > max_length:
+  max_length=current_length
+print("length of maximum sequence number:",max_length)
